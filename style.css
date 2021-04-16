@@ -99,6 +99,10 @@ p {
   height: 8vmin;
   border: 2px black solid;
 }
+.policko:hover {
+  opacity:80%;  
+
+}
 .policko:nth-child(10n) {
   flex-grow: 1;
 }
