@@ -8,32 +8,13 @@ const JenNaRade = document.querySelector(".hraje1");
 btn.classList.add("board__field--cross"); */
 /* const hra = document.querySelectorAll(".hra"); */
 
-const grid_size = 10
-const circle = 0
-const cross = 1
-const none = -1
-
 const hra = (event) => {
-
-  let idx = getButtonIndex(event.target)
-  let row = Math.floor(idx / grid_size)
-  let col = idx % grid_size 
-  console.log(idx, row, col)
-
-
-
   if (kdoJeNaTahu === "circle") {
     event.target.classList.add("board__field--circle");
     /* event.target.innerHTML = `<img " src="podklady/circle.svg" alt="kolecko">`;  */
     document.querySelector(".hraje1").innerHTML = `<p> HRAJE:</p> <img class="kolecko" src="podklady/circle.svg" alt="circle">`;
     event.target.disabled = true;
     kdoJeNaTahu = "cross";
-
-    if ( checkLastMoveWins(row, col)) {
-      console.log("kolecka vyhravaji")
-    }
-
-
     /* isWinningMove() */
   } else {
     event.target.classList.add("board__field--cross");
@@ -42,75 +23,9 @@ const hra = (event) => {
     event.target.disabled = true;
     kdoJeNaTahu = "circle";
      /* isWinningMove() */
-
-     if ( checkLastMoveWins(row, col)) {
-      console.log("krizky vyhravaji")
-    }
-
   }
-
 };
-
-function getButtonIndex(button) {
-  let policka = document.querySelectorAll(".policko")
-  for(let i=0; i<policka.length; i+=1) {
-    if (policka[i] === button) {
-      return i
-    }
-  }
-  return -1
-}
-
-function getButtonValue(row, col) {
-  let idx = row * grid_size + col
-  let button = document.querySelectorAll(".policko")[idx]
-  if (button.classList.contains("board__field--cross")) {
-    return cross
-  }
-  else if (button.classList.contains("board__field--circle")) {
-    return circle
-  }
-  else {
-    return none
-  }
-}
-
-function checkLastMoveWins(row, col) {
-
-  const currentPlayer = getButtonValue(row, col)
-
-  let sameValueUp = row
-  for(sameValueUp=row; sameValueUp>=0; sameValueUp-=1) {
-    if (getButtonValue(sameValueUp, col) != currentPlayer) {
-      break
-    }
-  }
-
-  let sameValueDown = row
-  for(sameValueDown=row; sameValueDown<grid_size; sameValueDown+=1) {
-    if (getButtonValue(sameValueDown, col) != currentPlayer) {
-      break
-    }
-  }
-
-  const fiveUpDown = (sameValueDown - sameValueUp -1) >= 5
-  
-  return fiveUpDown
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-const items = document.querySelectorAll(".policko"); 
+ const items = document.querySelectorAll(".policko"); 
 for (let i = 0; i < items.length; i += 1) {
   items[i].addEventListener("click", hra);
 }

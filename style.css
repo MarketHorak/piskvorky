@@ -33,16 +33,21 @@ h1 {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-
 .hraje {
   display: flex;
-  /*   flex-direction: row; */
-  flex-wrap: wrap;
+  flex-wrap: row;
   width: 80vmin;
   margin: 0 auto;
   align-items: center;
   justify-content: space-between;
 }
+.hraje1 {
+  flex-wrap: row;
+  width: 80vmin;
+  margin: 0 auto;
+  align-items: center;
+}
+
 p {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bolder;
@@ -67,6 +72,7 @@ p {
   background-color: rgb(4, 145, 27);
   border-radius: 5px;
   margin: 5px;
+  padding: 5px;
 }
 .domu:hover {
   background-color: #1cbb96;
@@ -77,6 +83,8 @@ p {
   background-color: rgb(18, 90, 172);
   border-radius: 5px;
   margin: 5px;
+  padding: 5px;
+
 }
 .restart:hover {
   background-color: #31afe9;
@@ -106,4 +114,18 @@ p {
 }
 .policko:nth-child(10n) {
   flex-grow: 1;
+}
+
+.board__field--circle {
+  background-image: url('podklady/circle.svg');
+  background-size: 2rem;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.board__field--cross {
+  background-image: url('podklady/cross.svg');
+  background-size: 2rem;
+  background-position: center;
+  background-repeat: no-repeat;
 }
